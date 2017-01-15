@@ -1,0 +1,16 @@
+Package: asqr
+Type: Package
+Title: Utilities for ASQ analysis
+Version: 0.0.0.9000
+Authors@R: person("Vassilis", "Triglianos", email = "vasileios.triglianos@usi.ch", role = c("aut", "cre"))
+Description: Contains utilities to clean and analyse ASQ datasets.
+Depends:
+    R (>= 3.3.1),
+    data.table
+Imports:
+    dplyr,
+    data.table
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
