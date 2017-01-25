@@ -43,6 +43,7 @@ group_by_time <- function(data){
     group_by(time, hasExercise) %>%
     summarise(
       connected = sum(as.numeric(connected)),
+      visible = sum(as.numeric(visible)),
       focus = sum(as.numeric(focus)),
       idle = sum(as.numeric(idle)),
       input = sum(as.numeric(input)),
@@ -144,6 +145,50 @@ calc_y_min_max_for_ribbon_plot <- function(time_dt){
     res$ymax[state_i] <- res$ymin[state_i] + res$ymax[state_i]
   }
   res
+}
+
+#' Prepare date for state plots.
+#'
+#' Utility function that reshapes user state data in the
+#' shape needed by the plotting functions. Shapes:
+#' \itemize{
+#'  \item{\strong{Per user state over time}.}{ Calls \code{\link{group_by_user_state}}.}
+#'  \item{\strong{State over time}.}{ Calls \code{\link{group_by_state_time}}.}
+#'  \item{\strong{State per slide over time}.}{ Calls \code{\link{group_by_state_time_slide}}.}
+#' }
+#' @param dt \code{data.table} user state
+#' @return  A \code(list) with
+#' \itemize{
+#'  \item{\code{dt}}{ The original \code{dt}}
+#'  \item{\code{by_user_state_time_dt}}{ Per user state over time}
+#'  \item{\code{by_state_time_dt}}{ State over time.}
+#'  \item{\code{by_state_time_slide_dt}}{ State per slide over time.}
+#' }
+#' @export
+prepare_data_for_state_plots <- function(dt){
+  d.ids <- dt %>% select(user) %>% distinct() %>% arrange(user)
+  d.ids$user_name <- paste0("viewer #", seq(1, nrow(d.ids)))
+  dt <- dt %>% left_join(d.ids)
+
+  by_user_state_time_dt <-group_by_user_state(dt)
+  by_state_time_dt <- group_by_state_time(dt)
+  by_state_time_slide_dt <- group_by_state_time_slide(dt)
+
+  by_state_time_dt <- pad_timeline_with_0_count_states(by_state_time_dt)
+  by_state_time_dt <- calc_y_min_max_for_ribbon_plot(by_state_time_dt)
+
+  by_state_time_slide_dt <- pad_timeline_with_0_count_states_by_slide(by_state_time_slide_dt)
+  by_state_time_slide_dt <- calc_y_min_max_for_ribbon_plot(by_state_time_slide_dt)
+
+  by_user_state_time_dt <- by_user_state_time_dt[ order(by_user_state_time_dt$state), ]
+  by_state_time_dt <- by_state_time_dt[ order(by_state_time_dt$state), ]
+  by_state_time_slide_dt <- by_state_time_slide_dt[ order(by_state_time_slide_dt$state), ]
+
+  list(
+    dt = dt,
+    by_user_state_time_dt = by_user_state_time_dt,
+    by_state_time_dt = by_state_time_dt,
+    by_state_time_slide_dt = by_state_time_slide_dt)
 }
 
 

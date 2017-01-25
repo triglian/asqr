@@ -19,7 +19,7 @@ get_mc_questions_for_session(sessions, slideshows, questions, sessionid)
 A data.frame with multi-choice questions
 }
 \description{
-Goes through the associated slideshow, finds the questions ids, retrives
+Goes through the associated slideshow, finds the questions ids, retrieves
 the questions and then filters for the `asq-multi-choice-q` type.
 }
 

@@ -1,6 +1,6 @@
 #' Get the multi-choice questions for a specific session id
 #'
-#' Goes through the associated slideshow, finds the questions ids, retrives
+#' Goes through the associated slideshow, finds the questions ids, retrieves
 #' the questions and then filters for the `asq-multi-choice-q` type.
 #' @param sessions sessions to search for the session with `sessionid`
 #' @param slideshows slideshows to search for the matching slideshow
@@ -55,7 +55,7 @@ get_mc_questions_for_session <- function(sessions, slideshows, questions, sessio
 get_mc_answers_with_score_for_questions <- function(answers, questions){
   result <- answers %>%
     filter(question %in% questions$question ) %>%
-    inner_join( questions, by="question") %>%
+    inner_join( questions, by=c("question", "type")) %>%
     select(-settings, -date_modified, -date_created) %>%
     rowwise() %>%
     mutate(score = calc_mc_score(submission, parse_mc_options(data))) %>%
@@ -95,7 +95,7 @@ calc_mc_score <- function (submission, solution){
 
   # return number only if there is a solution
   # TODO when we know if a multi-choice question is multi or not
-  if(TRUE %in% solution$correct){
+  if(nrow(solution) > 0){
 
     solution <- as.data.frame(solution)
     sub <- as.data.frame(submission)

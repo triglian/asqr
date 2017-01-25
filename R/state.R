@@ -395,6 +395,6 @@ calc_user_state_for_users <- function(users, events, startDate, endDate, slide_t
 
   # concatentate viewer state data frames for all users
   # into one data frame
-  dt <- rbind_all(l_user_state)
+  dt <- bind_rows(l_user_state)
   dt
 }

@@ -149,3 +149,64 @@ check_na_null_0length <- function(val){
   if(is.null(val)) stop("argument ", var_name, " is NULL")
   if(length(val)==0) stop("argument ", var_name, " has 0 length")
 }
+
+yapply <- function(X,FUN, ...) {
+  index <- seq(length.out=length(X))
+  namesX <- names(X)
+  if(is.null(namesX))
+    namesX <- rep(NA,length(X))
+
+  FUN <- match.fun(FUN)
+  fnames <- names(formals(FUN))
+  if( ! "INDEX" %in% fnames ){
+    formals(FUN) <- append( formals(FUN), alist(INDEX=) )
+  }
+  if( ! "NAMES" %in% fnames ){
+    formals(FUN) <- append( formals(FUN), alist(NAMES=) )
+  }
+  mapply(FUN,X,INDEX=index, NAMES=namesX,MoreArgs=list(...))
+}
+
+
+#' Get the questions for a specific session id
+#'
+#' Goes through the associated slideshow, finds the questions ids and retrieves
+#' the questions
+#' @param sessions sessions to search for the session with `sessionid`
+#' @param slideshows slideshows to search for the matching slideshow
+#' @param questions questions to search
+#' @param sessionid the id of the session we want to find questions for
+#' @return A data.frame with the found questions
+#' @export
+get_questions_for_session <- function(sessions, slideshows, questions, sessionid){
+  session <- sessions %>% filter(id == sessionid)
+
+  # find slideshow at the same time
+  sl <- slideshows %>%
+    filter(id == session$slides[1])
+
+
+  # create data.frame with questions
+  sq.df <- data.frame(slideshow=character(),
+                      question=character())
+
+  sl %>%
+    rowwise() %>%
+    do({
+      question <- extract_questions_from_slideshow_questions_field(.$questions)
+      if(is.character(question)){
+        slideshow <- rep(.$id, length(question))
+        sq.df <<- sq.df %>% bind_rows(data.frame(slideshow, question)) %>% collect()
+      }
+    }) %>%
+    ungroup()
+
+  # add slide name
+  qins.df <- sq.df %>%
+    inner_join(questions, by=c("question" ="id") ) %>%
+    rowwise() %>%
+    mutate(slide = find_slide_which_contains_question(sl, question)) %>%
+    ungroup()
+
+  qins.df
+}

@@ -9,7 +9,8 @@ Depends:
     data.table
 Imports:
     dplyr,
-    data.table
+    data.table,
+    jsonlite
 License: MIT
 Encoding: UTF-8
 LazyData: true
