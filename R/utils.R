@@ -172,14 +172,12 @@ yapply <- function(X,FUN, ...) {
 #'
 #' Goes through the associated slideshow, finds the questions ids and retrieves
 #' the questions
-#' @param sessions sessions to search for the session with `sessionid`
+#' @param session The session for which to get questions
 #' @param slideshows slideshows to search for the matching slideshow
 #' @param questions questions to search
-#' @param sessionid the id of the session we want to find questions for
 #' @return A data.frame with the found questions
 #' @export
-get_questions_for_session <- function(sessions, slideshows, questions, sessionid){
-  session <- sessions %>% filter(id == sessionid)
+get_questions_for_session <- function(session, slideshows, questions){
 
   # find slideshow at the same time
   sl <- slideshows %>%
@@ -209,4 +207,35 @@ get_questions_for_session <- function(sessions, slideshows, questions, sessionid
     ungroup()
 
   qins.df
+}
+
+#' Get the questions for a specific session id
+#'
+#' Goes through the associated slideshow, finds the questions ids and retrieves
+#' the questions
+#' @param questions questions to add startDate to
+#' @param session The session to use to scan for \code{question-activated} events
+#' @param sessionevents events that contain the \code{question-activated} events
+#' @return A \code{data.frame} with the session and question id and the \code{startDate} field
+#' @export
+add_startdate_to_questions_for_session <- function(questions, session, sessionevents){
+
+  # find all events for question activated and add a question field
+  # with the id of the question
+  sid <- session$id
+
+  start_times <-sessionevents %>%
+    filter(session == sid,  type == 'question-activated')  %>%
+    select(id, session, data, time) %>%
+    rowwise()  %>%
+    mutate(question= fromJSON(data)$question$`$oid`)  %>%
+    ungroup() %>%
+
+    # pick only the first activation event for each question
+    group_by(question)  %>%
+    slice(which.min(time)) %>%
+    # filter(time == min(time))%>% this allows ties of min values
+
+    left_join(questions, by='question')  %>%
+    select(session, question, startDate = time)
 }

@@ -4,16 +4,14 @@
 \alias{get_questions_for_session}
 \title{Get the questions for a specific session id}
 \usage{
-get_questions_for_session(sessions, slideshows, questions, sessionid)
+get_questions_for_session(session, slideshows, questions)
 }
 \arguments{
-\item{sessions}{sessions to search for the session with `sessionid`}
+\item{session}{The session for which to get questions}
 
 \item{slideshows}{slideshows to search for the matching slideshow}
 
 \item{questions}{questions to search}
-
-\item{sessionid}{the id of the session we want to find questions for}
 }
 \value{
 A data.frame with the found questions
