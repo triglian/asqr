@@ -605,8 +605,7 @@ draw_connected_focus_area <- function(dt, slide_transitions_with_ex, slide_trans
                      breaks = date_breaks(paste(300, "sec")))+
     ylab("number of students") +
     theme_bw() +
-    theme(legend.position="top",
-          axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1),
           axis.title.x = element_text(size=14),
           axis.title.y = element_text(size=14),
           panel.grid.major = element_blank(),
