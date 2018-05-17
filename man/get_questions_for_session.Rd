@@ -20,4 +20,3 @@ A data.frame with the found questions
 Goes through the associated slideshow, finds the questions ids and retrieves
 the questions
 }
-

@@ -30,4 +30,3 @@ Creates a 7 bit number according to the value
 of the 7 vars: \code{hasExercise}, \code{visible}, \code{connected},
 \code{focus}, \code{idle}, \code{input} and \code{submitted}.
 }
-

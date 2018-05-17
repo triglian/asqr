@@ -9,4 +9,3 @@ group_by_state_time_slide(data)
 \description{
 group by state. time and slide
 }
-

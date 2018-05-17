@@ -9,4 +9,3 @@ draw_activity_bar_by_user(dt, state_labels)
 \description{
 faceted bar of user activity
 }
-

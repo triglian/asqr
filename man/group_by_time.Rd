@@ -9,4 +9,3 @@ group_by_time(data)
 \description{
 group by time
 }
-

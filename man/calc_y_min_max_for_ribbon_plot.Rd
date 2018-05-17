@@ -9,4 +9,3 @@ calc_y_min_max_for_ribbon_plot(time_dt)
 \description{
 intended to be used in a ribbon plot
 }
-

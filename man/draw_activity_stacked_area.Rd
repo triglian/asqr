@@ -12,4 +12,3 @@ draw_activity_stacked_area(dt, slide_transitions_with_ex,
 \description{
 stacked area plot
 }
-

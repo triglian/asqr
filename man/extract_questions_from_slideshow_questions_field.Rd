@@ -19,4 +19,3 @@ Get a vector with the oids of the questions from the
 JSON stringified `questions` field of a slideshow
 document
 }
-

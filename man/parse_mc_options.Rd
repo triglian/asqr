@@ -17,4 +17,3 @@ a vector with the parsed options
 Parse JSON stringified options from an asq-multi-choice-q question `data`
 field
 }
-

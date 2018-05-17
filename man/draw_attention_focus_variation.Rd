@@ -10,4 +10,3 @@ draw_attention_focus_variation(dt, slide_transitions_with_ex,
 \description{
 TODO: document
 }
-

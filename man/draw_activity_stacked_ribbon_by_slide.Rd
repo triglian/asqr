@@ -9,4 +9,3 @@ draw_activity_stacked_ribbon_by_slide(dt, state_labels)
 \description{
 stacked ribbon plot
 }
-

@@ -9,4 +9,3 @@ draw_activity_stacked_area_by_slide(dt, state_labels)
 \description{
 TODO: document
 }
-

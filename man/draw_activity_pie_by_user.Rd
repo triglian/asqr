@@ -9,4 +9,3 @@ draw_activity_pie_by_user(dt, state_labels)
 \description{
 faceted pie of user activity
 }
-

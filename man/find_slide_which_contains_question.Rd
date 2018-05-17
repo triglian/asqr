@@ -18,4 +18,3 @@ the name of the slide
 Goes through the associated slideshow and retrieves the name (HTML id)
 of the slide that contains the question with the specified id.
 }
-

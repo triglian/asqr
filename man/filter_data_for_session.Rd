@@ -50,4 +50,3 @@ slidetransitions = data.frame(
 
 filter_data_for_session(session, whitelistentries, sessionevents, slidetransitions)
 }
-

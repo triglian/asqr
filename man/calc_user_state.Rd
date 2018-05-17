@@ -28,4 +28,3 @@ different indicators:
 \code{hasExercise}, \code{connected}, \code{visible}, \code{focus},
 \code{idle}, \code{input} and \code{submitted}.
 }
-

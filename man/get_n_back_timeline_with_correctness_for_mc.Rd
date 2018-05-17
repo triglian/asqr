@@ -10,4 +10,3 @@ get_n_back_timeline_with_correctness_for_mc(user.state, session, sessions,
 \description{
 TODO: Document
 }
-

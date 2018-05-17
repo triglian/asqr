@@ -10,4 +10,3 @@ draw_activity_lines(dt, slide_transitions_with_ex, slide_transitions_without_ex,
 \description{
 line plot
 }
-

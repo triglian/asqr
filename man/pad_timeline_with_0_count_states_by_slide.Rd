@@ -9,4 +9,3 @@ pad_timeline_with_0_count_states_by_slide(time_dt)
 \description{
 insert an entry with zero count for each state for each missing timestamp
 }
-

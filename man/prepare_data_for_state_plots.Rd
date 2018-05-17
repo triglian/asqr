@@ -10,7 +10,7 @@ prepare_data_for_state_plots(dt)
 \item{dt}{\code{data.table} user state}
 }
 \value{
-A \code(list) with
+A \code{list} with
 \itemize{
  \item{\code{dt}}{ The original \code{dt}}
  \item{\code{by_user_state_time_dt}}{ Per user state over time}
@@ -27,4 +27,3 @@ shape needed by the plotting functions. Shapes:
  \item{\strong{State per slide over time}.}{ Calls \code{\link{group_by_state_time_slide}}.}
 }
 }
-

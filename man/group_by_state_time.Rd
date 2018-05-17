@@ -9,4 +9,3 @@ group_by_state_time(data)
 \description{
 group by state and time
 }
-

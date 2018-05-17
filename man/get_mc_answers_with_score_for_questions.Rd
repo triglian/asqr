@@ -17,4 +17,3 @@ a data.frame with the matching answers and their scores
 \description{
 Get answers for the provided asq-multi-choice-questions and calculate their score
 }
-

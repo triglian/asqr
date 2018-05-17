@@ -17,4 +17,3 @@ Groups by state and time, adds entries with count of 0 for the
 states that don't appear in the data, calculates the height of
 each ribbon and reorders the states
 }
-

@@ -9,4 +9,3 @@ draw_activity_bar(dt, state_labels)
 \description{
 stacked bar of user activity as total events
 }
-

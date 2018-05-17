@@ -26,4 +26,3 @@ it tries to find `n` consecutive slide transitions that don't contain
 an exercise. It will return all the non-exercise slide transitions it
 could find (up to `n`) plus the question.slide transition.
 }
-

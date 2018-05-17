@@ -22,4 +22,3 @@ A data.frame with multi-choice questions
 Goes through the associated slideshow, finds the questions ids, retrieves
 the questions and then filters for the `asq-multi-choice-q` type.
 }
-

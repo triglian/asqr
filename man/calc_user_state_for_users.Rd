@@ -26,4 +26,3 @@ timeline with one second intervals from \code{startDate} to \code{endDate}
 that holds 6 state indicators: \code{hasExercise}, \code{connected},
 \code{focus}, \code{idle}, \code{input} and \code{submitted}.
 }
-

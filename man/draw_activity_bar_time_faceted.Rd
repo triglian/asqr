@@ -10,4 +10,3 @@ draw_activity_bar_time_faceted(dt, slide_transitions_with_ex,
 \description{
 stacked bar of user activity over time
 }
-

@@ -18,4 +18,3 @@ Goes through the 7 states: \code{hasExercise}, \code{connected}, \code{visible},
 any inconsistencies. For example, if the user is not connected the rest of
 the states should be \code{NA}.
 }
-

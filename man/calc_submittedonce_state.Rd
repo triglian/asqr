@@ -18,4 +18,3 @@ An updated timeline \code{data.frame} with the submitted state set.
 Given a \code{data.frame} of user event and an associated timeline, for each
 second of the timeline it calculates if the user was submitted at least once or not.
 }
-

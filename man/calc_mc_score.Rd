@@ -18,4 +18,3 @@ a vector with the parsed options
 If the submission has exactly the same checked options as the solution
 then the score is 100. Otherwise, it's 0.
 }
-

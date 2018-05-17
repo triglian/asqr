@@ -9,4 +9,3 @@ group_by_user_state(data)
 \description{
 group by user and state and add fields for pie charts
 }
-

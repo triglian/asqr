@@ -10,4 +10,3 @@ draw_connected_focus_area(dt, slide_transitions_with_ex,
 \description{
 stacked area plot
 }
-

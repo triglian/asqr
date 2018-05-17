@@ -20,4 +20,3 @@ A \code{data.frame} with the session and question id and the \code{startDate} fi
 Goes through the associated slideshow, finds the questions ids and retrieves
 the questions
 }
-

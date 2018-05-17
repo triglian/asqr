@@ -11,4 +11,3 @@ for each second that there is no observation for, between the min and
 max time of timestamps in time_dt, inject observations with 0 count.
 This stops plots from interpolating data.
 }
-

@@ -10,4 +10,3 @@ draw_activity_bar_time(dt, slide_transitions_with_ex,
 \description{
 stacked bar of user activity over time
 }
-
